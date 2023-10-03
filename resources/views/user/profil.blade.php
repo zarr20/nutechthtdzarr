@@ -21,7 +21,7 @@
                                 <!-- Tambahkan ikon pensil atau ikon lainnya -->
                                 <i onclick="triggerFileInput()"
                                     class="absolute text-[12px] right-0 bottom-0 mt-1 mr-1 fa fa-pencil aspect-square w-[30px] flex items-center justify-center rounded-full bg-white border-2 cursor-pointer"></i>
-                                <img src="{{ Storage::url($userInfo->image) }}"  alt="Preview Image" id="imagePreview"
+                                <img src="{{ asset('storage/' . @$userInfo->image) }}"  alt="Preview Image" id="imagePreview"
                                     class="w-32 h-32 object-cover rounded-full border-2 shadow-lg">
                                 <!-- Sembunyikan input file asli -->
                                 <input type="file" id="image" name="image" accept="image/*"
@@ -50,13 +50,7 @@
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
-                        <!-- Password Input -->
-                        <div>
-                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" id="password" name="password"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
-
+                
                         <!-- Save Button -->
                         <div class="col-span-2">
                             <x-button type="submit"

@@ -22,23 +22,22 @@ class UserController extends Controller
     {
         $user = Auth::user(); // Mendapatkan data pengguna yang sedang login
 
-        // Validasi input form
-        $request->validate([
+        // Validation rules for form fields
+        $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'image' => 'image|mimes:jpeg,png,jpg|max:100', // Validasi upload gambar
-            // Tambahkan validasi lain sesuai kebutuhan
-        ]);
+            'image' => 'image|mimes:jpeg,png,jpg|max:100', // Image validation
+        ];
 
-        // Mengambil data dari form
+    
+        $request->validate($rules);
+
+        // Update user data
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        // Mengganti data lainnya sesuai kebutuhan
 
-        // Menyimpan perubahan data pengguna
+      
         $user->save();
-
-        // echo $user->id;
 
         // Memperbarui data position dan image pada tabel user_info
         if ($request->has('position') || $request->has('image')) {
@@ -63,6 +62,6 @@ class UserController extends Controller
         }
 
         // Redirect kembali ke halaman profil dengan pesan sukses
-        return redirect()->route('profil')->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->route('profil')->with('success', 'Profil berhasil diperbarui.' . $request->input('password'));
     }
 }

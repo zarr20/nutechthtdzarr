@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,6 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-
+Route::get('/storage/{filename}', [FileController::class, 'show'])->where('filename', '(.*)');
 
 require __DIR__ . '/auth.php';

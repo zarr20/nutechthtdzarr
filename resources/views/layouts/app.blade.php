@@ -13,7 +13,9 @@
     <link href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+   
 </head>
 
 <body class="font-sans antialiased">
@@ -141,8 +143,8 @@
 
 
 
-
-    <script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
 </body>
 
 </html>
